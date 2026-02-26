@@ -1,5 +1,5 @@
 .contact {
-  padding: 4rem 4rem 0;
+  padding: 4rem 4rem 4rem;
   background: #0a192f;
 }
 
@@ -206,18 +206,6 @@
   text-align: center;
 }
 
-.footer {
-  margin-top: 4rem;
-  padding: 1.5rem;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer p {
-  color: #8892b0;
-  font-size: 0.875rem;
-  margin: 0;
-}
 
 @media (max-width: 968px) {
   .contact-content {
@@ -228,7 +216,7 @@
 
 @media (max-width: 768px) {
   .contact {
-    padding: 3rem 1rem 0;
+    padding: 3rem 1rem 3rem;
   }
 
   .contact .section-header {
@@ -295,14 +283,5 @@
   .social-link svg {
     width: 20px;
     height: 20px;
-  }
-
-  .footer {
-    margin-top: 3rem;
-    padding: 1.5rem;
-  }
-
-  .footer p {
-    font-size: 0.75rem;
   }
 }

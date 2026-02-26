@@ -225,9 +225,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
-      </footer>
     </section>
   );
 };
