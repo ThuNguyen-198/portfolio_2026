@@ -14,6 +14,10 @@ import movie6 from '../assets/projects/Movies/movie-6.png';
 import movie7 from '../assets/projects/Movies/movie-7.png';
 import movie8 from '../assets/projects/Movies/movie-8.png';
 
+// Weather Forecast images
+import weatherGif from '../assets/projects/weatherForecast/weather.gif';
+
+
 interface Project {
   id: number;
   title: string;
@@ -27,27 +31,42 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: "1235 Movies Website",
+    description: "A modern website that helps managing work flows of a movie theater. Admins can add/delete movies, manage database system of revenue, tickets, and see the monthly reports. The website streamlines ticket booking process by allowing regular users to see the list of current/upcoming movies, search by movie names, then book and pay for the tickets.",
+    images: [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8],
+    tags: ["Angular", "Bootstrap", "CSS", "Node.js", "MongoDB", "Movies API"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    id: 2,
     title: "Animal World",
-    description: "An interactive educational platform showcasing various animals from around the world with detailed information, images, and fun facts.",
+    description: "An interactive frontend web application allowing users to flip animal cards and test their knowledge of animal names. The application features a system that matches the user's input against a pre-determined list of correct answers. It also includes a scoring system that keeps track of the user's longest strike and displays their current score at the end of each round.",
     images: [animalWorld],
     tags: ["React", "TypeScript", "CSS"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
-    id: 2,
-    title: "1235 Movies Website",
-    description: "A comprehensive movie database website featuring movie listings, search functionality, ratings, and detailed information about films.",
-    images: [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8],
-    tags: ["React", "TypeScript", "API"],
+    id: 3,
+    title: "Weather Forecast",
+    description: "An interactive weather forecasting application that allows users to check the weather for locations of their choice. The application retrieves weather data from a weather API and displays current weather conditions, temperature, humidity. Information displayed will be updated after every 15 minutes.",
+    images: [weatherGif],
+    tags: ["React", "TypeScript", "Weather API"],
     liveUrl: "#",
     githubUrl: "#"
-  }
+  },
 ];
 
 const Projects = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({});
+  const [expandedDesc, setExpandedDesc] = useState<{ [key: number]: boolean }>({});
+
+  const toggleDescription = (id: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedDesc(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const handleProjectClick = (id: number) => {
     setSelectedId(selectedId === id ? null : id);
@@ -180,7 +199,14 @@ const Projects = () => {
                     </div>
                     <div className="project-content">
                       <h3 className="project-title">{project.title}</h3>
-                      <p className="project-description">{project.description}</p>
+                      <div className={`description-wrapper ${expandedDesc[project.id] ? 'expanded' : ''}`}>
+                        <p className={`project-description ${expandedDesc[project.id] ? 'expanded' : ''}`}>
+                          {project.description}
+                        </p>
+                        <button className="expand-btn" onClick={(e) => toggleDescription(project.id, e)}>
+                          {expandedDesc[project.id] ? 'Show less' : 'Read more'}
+                        </button>
+                      </div>
                       <div className="project-tags">
                         {project.tags.map((tag) => (
                           <span key={tag} className="project-tag">{tag}</span>

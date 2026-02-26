@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const sections = ['home', 'projects', 'skills', 'contact'];
+    const sections = ['home', 'experience', 'projects', 'skills', 'contact'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
@@ -97,6 +97,15 @@ const Navbar = () => {
                 onClick={closeMenu}
               >
                 Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="#experience"
+                className={`nav-link ${activeSection === 'experience' ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Experience
               </a>
             </li>
             <li className="nav-item">
